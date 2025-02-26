@@ -443,79 +443,172 @@ button:hover {
 </section>
 
     <!-- Skills Section -->
-<section id="skills">
-    <h2 style="text-align: center; color: #64ffda;">Skills</h2>
-    <div class="skills-container">
-        <!-- Skill 1 -->
-        <div class="skill-card">
-            <h3>Machine Learning</h3>
-            <span class="skill-badge">XGBoost</span>
-            <span class="skill-badge">Random Forest</span>
-            <span class="skill-badge">TensorFlow</span>
-            <span class="skill-badge">Deep Learning</span>
-            <span class="skill-badge">Transfer Learning</span>
-            <span class="skill-badge">NLP</span>
+<!-- Cosmic Skill Nebula Section -->
+<section id="skills-nebula">
+    <h2 style="text-align: center; color: #64ffda; padding: 20px; z-index: 10; position: relative;">Journey Through My Skill Nebula</h2>
+    <div id="nebula-container" class="nebula-container">
+        <!-- Skill Clusters -->
+        <div class="skill-cluster" style="top: 15%; left: 20%;" data-skill="Machine Learning">
+            <div class="cluster-core">ML</div>
+            <div class="skill-orbit">
+                <span>XGBoost</span><span>Random Forest</span><span>TensorFlow</span>
+                <span>Deep Learning</span><span>Transfer Learning</span><span>NLP</span>
+            </div>
         </div>
-        <!-- Skill 2 -->
-        <div class="skill-card">
-            <h3>Data Engineering</h3>
-            <span class="skill-badge">Apache Spark</span>
-            <span class="skill-badge">Kafka</span>
-            <span class="skill-badge">Airflow</span>
-            <span class="skill-badge">Azure Data Factory</span>
-            <span class="skill-badge">ETL Frameworks</span>
+        <div class="skill-cluster" style="top: 25%; left: 65%;" data-skill="Data Engineering">
+            <div class="cluster-core">DE</div>
+            <div class="skill-orbit">
+                <span>Apache Spark</span><span>Kafka</span><span>Airflow</span>
+                <span>Azure Data Factory</span><span>ETL Frameworks</span>
+            </div>
         </div>
-        <!-- Skill 3 -->
-        <div class="skill-card">
-            <h3>Databases</h3>
-            <span class="skill-badge">SQL</span>
-            <span class="skill-badge">PostgreSQL</span>
-            <span class="skill-badge">MySQL</span>
-            <span class="skill-badge">MongoDB</span>
-            <span class="skill-badge">SQLite</span>
-            <span class="skill-badge">T-SQL</span>
-            <span class="skill-badge">PL/SQL</span>
+        <div class="skill-cluster" style="top: 55%; left: 30%;" data-skill="Databases">
+            <div class="cluster-core">DB</div>
+            <div class="skill-orbit">
+                <span>SQL</span><span>PostgreSQL</span><span>MySQL</span>
+                <span>MongoDB</span><span>SQLite</span><span>T-SQL</span><span>PL/SQL</span>
+            </div>
         </div>
-        <!-- Skill 4 -->
-        <div class="skill-card">
-            <h3>Cloud & DevOps</h3>
-            <span class="skill-badge">Azure</span>
-            <span class="skill-badge">CI/CD</span>
-            <span class="skill-badge">Docker</span>
-            <span class="skill-badge">Cloud Engineering</span>
-            <span class="skill-badge">Azure VM</span>
+        <div class="skill-cluster" style="top: 65%; left: 75%;" data-skill="Cloud & DevOps">
+            <div class="cluster-core">CD</div>
+            <div class="skill-orbit">
+                <span>Azure</span><span>CI/CD</span><span>Docker</span>
+                <span>Cloud Engineering</span><span>Azure VM</span>
+            </div>
         </div>
-        <!-- Skill 5 -->
-        <div class="skill-card">
-            <h3>Programming Languages</h3>
-            <span class="skill-badge">Python</span>
-            <span class="skill-badge">Java</span>
-            <span class="skill-badge">SQL</span>
-            <span class="skill-badge">Bash/Shell Scripting</span>
+        <div class="skill-cluster" style="top: 35%; left: 45%;" data-skill="Programming Languages">
+            <div class="cluster-core">PL</div>
+            <div class="skill-orbit">
+                <span>Python</span><span>Java</span><span>SQL</span>
+                <span>Bash/Shell Scripting</span>
+            </div>
         </div>
-        <!-- Skill 6 -->
-        <div class="skill-card">
-            <h3>Data Visualization & BI</h3>
-            <span class="skill-badge">Power BI</span>
-            <span class="skill-badge">Business Intelligence</span>
-            <span class="skill-badge">Excel</span>
-            <span class="skill-badge">Pandas</span>
-            <span class="skill-badge">Numpy</span>
+        <div class="skill-cluster" style="top: 75%; left: 50%;" data-skill="Data Visualization & BI">
+            <div class="cluster-core">DV</div>
+            <div class="skill-orbit">
+                <span>Power BI</span><span>Business Intelligence</span><span>Excel</span>
+                <span>Pandas</span><span>Numpy</span>
+            </div>
         </div>
-        <!-- Skill 7 -->
-        <div class="skill-card">
-            <h3>Version Control & Collaboration</h3>
-            <span class="skill-badge">GitHub</span>
+        <div class="skill-cluster" style="top: 45%; left: 85%;" data-skill="Version Control & Collaboration">
+            <div class="cluster-core">VC</div>
+            <div class="skill-orbit">
+                <span>GitHub</span>
+            </div>
         </div>
-        <div class="skill-card">
-            <h3>Requirement Gathering & Documentation</h3>
-            <span class="skill-badge">Requirement Gathering</span>
-            <span class="skill-badge">SOP Creation</span>
-            <span class="skill-badge">Technical Documentation</span>
-            <span class="skill-badge">Stakeholder Communication</span>
+        <div class="skill-cluster" style="top: 85%; left: 15%;" data-skill="Requirement Gathering & Documentation">
+            <div class="cluster-core">RG</div>
+            <div class="skill-orbit">
+                <span>Requirement Gathering</span><span>SOP Creation</span>
+                <span>Technical Documentation</span><span>Stakeholder Communication</span>
+            </div>
         </div>
     </div>
 </section>
+
+<!-- Include Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<style>
+    .nebula-container {
+        position: relative;
+        height: 80vh;
+        background: linear-gradient(135deg, #0d0d2b 0%, #1a1a3d 50%, #000 100%);
+        overflow: hidden;
+        border-radius: 10px;
+    }
+    .skill-cluster {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        perspective: 1000px; /* Adds 3D depth */
+    }
+    .cluster-core {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        background: #64ffda;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #0d0d2b;
+        font-size: 18px;
+        box-shadow: 0 0 20px #64ffda, 0 0 40px rgba(100, 255, 218, 0.6);
+        animation: pulseCore 2s infinite alternate;
+        z-index: 5;
+    }
+    .skill-orbit {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        animation: orbit 10s infinite linear;
+        transform-style: preserve-3d;
+    }
+    .skill-orbit span {
+        position: absolute;
+        background: rgba(100, 255, 218, 0.8);
+        color: #0d0d2b;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        transform: translateZ(20px);
+        box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+    }
+    /* Position sub-skills around the core */
+    .skill-orbit span:nth-child(1) { top: 0; left: 50%; transform: translate(-50%, -100%) rotateX(20deg); }
+    .skill-orbit span:nth-child(2) { top: 25%; right: 0; transform: translate(100%, -50%) rotateY(20deg); }
+    .skill-orbit span:nth-child(3) { bottom: 0; left: 50%; transform: translate(-50%, 100%) rotateX(-20deg); }
+    .skill-orbit span:nth-child(4) { top: 50%; left: 0; transform: translate(-100%, -50%) rotateY(-20deg); }
+    .skill-orbit span:nth-child(5) { top: 10%; right: 10%; transform: translate(50%, -50%) rotateZ(10deg); }
+    .skill-orbit span:nth-child(6) { bottom: 10%; left: 10%; transform: translate(-50%, 50%) rotateZ(-10deg); }
+    .skill-orbit span:nth-child(7) { bottom: 20%; right: 20%; transform: translate(50%, 50%) rotateZ(15deg); }
+
+    .skill-cluster:hover .cluster-core { transform: translate(-50%, -50%) scale(1.2); }
+    .skill-cluster:hover .skill-orbit { animation-play-state: paused; }
+
+    @keyframes pulseCore {
+        0% { box-shadow: 0 0 20px #64ffda; }
+        100% { box-shadow: 0 0 30px #64ffda, 0 0 50px rgba(100, 255, 218, 0.7); }
+    }
+    @keyframes orbit {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+
+<script>
+    // Initialize Particles.js for background nebula effect
+    particlesJS("nebula-container", {
+        particles: {
+            number: { value: 100, density: { enable: true, value_area: 800 } },
+            color: { value: "#64ffda" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5, random: true },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: "#64ffda", opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 2, direction: "none", random: true, out_mode: "out" }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
+            modes: { grab: { distance: 140, line_linked: { opacity: 0.7 } }, push: { particles_nb: 4 } }
+        },
+        retina_detect: true
+    });
+
+    // Optional: Add click interaction
+    document.querySelectorAll('.skill-cluster').forEach(cluster => {
+        cluster.addEventListener('click', () => {
+            const skill = cluster.dataset.skill;
+            alert(`Exploring ${skill} cluster!`); // Replace with project scroll or external link
+        });
+    });
+</script>
 <section id="contact">
     <h2>Let's Connect and Transform Data into Insights!</h2>
     <form action="https://formspree.io/f/xnnjlqoo" method="POST">
