@@ -1,284 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maharshi Shukla | Experience</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+<script>
+    function openModal() { document.getElementById('dashboardModal').style.display = 'block'; }
+    function closeModal() { document.getElementById('dashboardModal').style.display = 'none'; }
+    window.onclick = function (event) {
+        var modal = document.getElementById('dashboardModal');
+        if (event.target === modal) modal.style.display = 'none';
+    }
+</script>
+
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0a192f;
-            color: #ccd6f6;
-            overflow-x: hidden;
-            position: relative;
-            z-index: 1;
-        }
-
-        .experience-container {
-            padding: 50px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .experience-header {
-            color: #64ffda;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 0;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: #64ffda;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-
-        .timeline-card {
-            position: relative;
-            background: #112240;
-            border-radius: 10px;
-            width: 45%;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            text-align: left;
-            transition: transform 0.5s ease;
-        }
-
-        .timeline-card h3 {
-            color: #64ffda;
-            margin: 0;
-        }
-
-        .timeline-card p {
-            color: #ccd6f6;
-        }
-
-        .timeline-card ul {
-            color: #8892b0;
-            margin: 10px 0 0 20px;
-            padding-left: 15px;
-        }
-
-        .timeline-card ul li {
-            list-style: disc;
-            margin-bottom: 5px;
-            text-align: left;
-        }
-
-        .timeline-card.left {
-            left: 0;
-            transform: translateX(-130%);
-        }
-
-        .timeline-card.right {
-            left: 50%;
-            transform: translateX(130%);
-        }
-
-        .timeline-card.active {
-            transform: translateX(0);
-        }
-
-        .timeline-card::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background-color: #64ffda;
-            top: 20px;
-            left: -13px;
-            z-index: 1;
-        }
-
-        .timeline-card.right::after {
-            left: -13px;
-        }
-
-        .back-home {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 20px;
-            color: #0a192f;
-            background-color: #64ffda;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .back-home:hover {
-            background-color: #52ccaf;
-        }
-
-        /* Particle.js background styling */
-        #particles-js {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-    </style>
+:root {
+    --bg: #0a192f;
+    --panel: #112240;
+    --panel-light: #172a45;
+    --text: #ccd6f6;
+    --muted: #8892b0;
+    --accent: #64ffda;
+    --white: #f7f7f7;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+main, header, footer { position: relative; z-index: 1; }
+header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(10, 25, 47, 0.94);
+    backdrop-filter: blur(10px);
+    padding: 18px 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.12);
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin: 0;
+    padding: 0 20px;
+}
+nav ul li { position: relative; }
+nav ul li a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 5px 0;
+    display: inline-block;
+}
+nav ul li a:hover { color: var(--white); transform: translateY(-1px); }
+nav ul li a:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+nav ul li a:hover:before { transform: scaleX(1); transform-origin: bottom left; }
+.hero {
+    max-width: 1180px;
+    margin: 8vh auto 0;
+    padding: 44px 28px 20px;
+}
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+}
+.eyebrow { color: var(--accent); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.9rem; }
+.hero h1 { font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.05; margin: 12px 0; color: var(--white); }
+.hero h1 span, h2 span { color: var(--accent); }
+.hero .subtitle { font-size: clamp(1.15rem, 2.4vw, 1.55rem); color: var(--text); max-width: 980px; }
+.hero p { color: var(--muted); max-width: 980px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+.btn {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+.btn:hover { background: rgba(100, 255, 218, 0.1); transform: translateY(-2px); }
+.btn.primary { background: var(--accent); color: var(--bg); }
+.hero-qr { text-align: center; min-width: 120px; }
+.hero-qr img { width: 110px; height: 110px; border-radius: 8px; border: 1px solid rgba(100,255,218,.35); }
+section { max-width: 1180px; margin: 0 auto; padding: 64px 28px; }
+h2 { text-align: center; color: var(--accent); font-size: 2.1rem; margin: 0 0 28px; }
+.section-intro { max-width: 850px; margin: 0 auto 32px; text-align: center; color: var(--muted); }
+.grid, .project-container, .skills-container, .publication-container, .experience-grid, .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
+}
+.card, .project-card, .skill-card, .publication-card, .experience-card, .cert-card {
+    background: rgba(17, 34, 64, 0.92);
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 18px 35px rgba(0,0,0,.18);
+    border: 1px solid rgba(100, 255, 218, 0.10);
+    transition: transform .25s ease, border-color .25s ease;
+}
+.card:hover, .project-card:hover, .skill-card:hover, .publication-card:hover, .experience-card:hover, .cert-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(100, 255, 218, 0.42);
+}
+.card h3, .project-card h3, .skill-card h3, .publication-card h3, .experience-card h3, .cert-card h3 { color: var(--accent); margin-top: 0; }
+.project-card img { width: 100%; border-radius: 10px; margin-bottom: 12px; }
+.meta { color: var(--muted); font-weight: 700; margin: 6px 0 14px; }
+ul.clean { padding-left: 18px; margin-bottom: 0; }
+ul.clean li { margin-bottom: 10px; color: var(--text); }
+.skill-badge {
+    display: inline-block;
+    background-color: rgba(100,255,218,.12);
+    color: var(--accent);
+    border: 1px solid rgba(100,255,218,.28);
+    padding: 8px 12px;
+    border-radius: 999px;
+    margin: 5px;
+    font-size: .92rem;
+    font-weight: 700;
+}
+.publication-card .publisher { color: var(--white); font-weight: 700; }
+.publication-card .date { color: var(--muted); }
+#contact {
+    max-width: none;
+    padding: 56px 20px;
+    background-color: rgba(10, 25, 47, 0.96);
+    color: var(--accent);
+    text-align: center;
+    border-top: 1px solid rgba(100,255,218,.25);
+}
+form { max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+form div { display: flex; flex-direction: column; text-align: left; }
+form label { font-size: 1rem; color: var(--white); margin-bottom: 4px; }
+form input, form textarea {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 7px;
+    background-color: #1a2436;
+    color: var(--white);
+}
+button {
+    background-color: var(--accent);
+    color: var(--bg);
+    padding: 13px;
+    border: none;
+    border-radius: 7px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 800;
+}
+.modal { display:none; position:fixed; inset:0; background-color: rgba(0,0,0,.82); z-index:999; }
+.modal-content { background-color: var(--bg); margin:5% auto; padding:20px; border:1px solid rgba(100,255,218,.35); width:82%; max-height:90vh; overflow:auto; border-radius:12px; position:relative; }
+.close { color:var(--accent); float:right; font-size:30px; font-weight:bold; cursor:pointer; }
+footer { text-align:center; color:var(--muted); padding: 28px; }
+@media (max-width: 768px) {
+    .hero-content { grid-template-columns: 1fr; }
+    .hero-qr { display: none; }
+    nav ul { gap: 14px; }
+    nav ul li a { font-size: .98rem; }
+}
+</style>
 </head>
-
 <body>
-    <!-- Particle.js Background -->
-    <div id="particles-js"></div>
-
-    <div class="experience-container">
-        <h1 class="experience-header">Experience</h1>
-        <div class="timeline">
-            <!-- Experience 1 (Most Recent) -->
-            <div class="timeline-card left active">
-                <h3>Data Analytics and Visualization Intern</h3>
-                <p>Vosyn, India<br>
-                    February 2025 – Present</p>
-                <ul>
-                    <li>Developing interactive dashboards and visualizations to aid data-driven decision-making.</li>
-                    <li>Implementing data analysis techniques to extract insights from large datasets.</li>
-                    <li>Collaborating with cross-functional teams to create actionable business intelligence reports.
-                    </li>
-                    <li>Optimizing data pipelines to streamline data collection and reporting processes.</li>
-                    <li>Utilizing advanced visualization tools like Tableau and Power BI to enhance stakeholder
-                        engagement.</li>
-                </ul>
-            </div>
-            <!-- Experience 2 -->
-            <div class="timeline-card right active">
-                <h3>Teaching Assistant – Neural Networks and Deep Learning</h3>
-                <p>Northeastern University, British Columbia<br>
-                    September 2024 – December 2024</p>
-                <ul>
-                    <li>Facilitated deep learning tutorials on backpropagation, neural network optimization, and model
-                        evaluation.</li>
-                    <li>Delivered workshops on advanced topics like transfer learning and model fine-tuning.</li>
-                    <li>Supervised lab sessions, guiding students through hands-on neural network development.</li>
-                    <li>Provided personalized feedback, resulting in a 25% reduction in debugging time and increased
-                        model accuracy.</li>
-                    <li>Collaborated with faculty to align course materials with industry standards, enhancing student
-                        engagement by 22%.</li>
-                </ul>
-            </div>
-            <!-- Experience 3 -->
-            <div class="timeline-card left active">
-                <h3>Data Engineer</h3>
-                <p>Shree Drashti Infotech, India<br>
-                    May 2021 – September 2022</p>
-                <ul>
-                    <li>Engineered and optimized Power BI reports for clients, enhancing decision-making capabilities by
-                        10%.</li>
-                    <li>Refined ETL pipelines for real-time and historical data processing, reducing data latency by
-                        20%.</li>
-                    <li>Integrated new data sources, increasing actionable data availability for analysis by 30%.</li>
-                    <li>Implemented data quality assurance measures with automated testing scripts, achieving 80% data
-                        accuracy.</li>
-                    <li>Collaborated with data science teams to support predictive analytics and machine learning
-                        models.</li>
-                </ul>
-            </div>
+<div id="particles-js"></div>
+<header><nav><ul>
+<li><a href="./index.html#about">About</a></li>
+<li><a href="./index.html#projects">Projects</a></li>
+<li><a href="./index.html#publications">Publications</a></li>
+<li><a href="./index.html#skills">Skills</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="./index.html#contact">Contact</a></li>
+</ul></nav></header>
+<main>
+<section class="hero" id="experience">
+    <div class="hero-content">
+        <div class="hero-text">
+            <p class="eyebrow">Professional Experience</p>
+            <h1>Experience in <span>AI, Data Engineering & Analytics</span></h1>
+            <p class="subtitle">Hands-on background in lakehouse engineering, data quality automation, machine learning-ready datasets, BI dashboards, and production analytics workflows.</p>
+            <div class="hero-actions"><a class="btn primary" href="./index.html">Back to Portfolio</a><a class="btn" href="#projects-expanded">View Projects</a></div>
         </div>
-        <a class="back-home" href="index.html">Back to Home</a>
     </div>
+</section>
 
-    <!-- Particle.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-    <script>
-        // Initialize Particle.js
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: '#64ffda'
-                },
-                shape: {
-                    type: 'circle',
-                    stroke: {
-                        width: 0,
-                        color: '#000000'
-                    }
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: false,
-                        speed: 4,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#64ffda',
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 6,
-                    direction: 'none',
-                    random: true,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                    attract: {
-                        enable: false,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'repulse'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                }
-            },
-            retina_detect: true
-        });
-    </script>
+<section>
+    <h2>Work <span>Experience</span></h2>
+    <div class="experience-grid">
+        <div class="experience-card">
+            <h3>H&B Analyst I · Aon</h3>
+            <p class="meta">June 2025 – Current · Toronto, Canada</p>
+            <ul class="clean">
+                <li>Reduced manual reporting effort by 50% by automating ingestion, transformation, and validation of 5,000+ insurance experience reports from Canada Life, Desjardins, and Sun Life using Databricks, PySpark, SQL, Python, and Delta Lake.</li>
+                <li>Improved data reliability by 35% by designing a Unity Catalog-enabled lakehouse architecture with governed Delta tables, schema validation, metadata tracking, audit logging, and reusable quality control workflows.</li>
+                <li>Increased data integrity by 40% by implementing automated validation checks for duplicate records, missing values, invalid dates, schema drift, outliers, and inconsistent carrier reporting formats.</li>
+                <li>Engineered structured datasets from claims, premiums, benefits, loss ratios, client attributes, carrier files, and reporting periods to support anomaly detection, trend analysis, and predictive modeling.</li>
+                <li>Built anomaly detection workflows for unusual claim patterns, irregular cost trends, and high-risk reporting anomalies using scikit-learn, statistical analysis, feature engineering, and MLflow experiment tracking.</li>
+                <li>Developed Power BI dashboards for claims analytics, premium trends, loss ratio monitoring, client performance, business growth, DAX, dynamic slicers, drillthrough pages, and scheduled refresh logic.</li>
+            </ul>
+        </div>
+        <div class="experience-card">
+            <h3>Data Engineer · Shree Drashti Infotech</h3>
+            <p class="meta">May 2021 – September 2022 · India</p>
+            <ul class="clean">
+                <li>Reduced data latency by 20% by building and optimizing SQL-based ETL pipelines for real-time and historical data processing across analytical reporting workflows.</li>
+                <li>Increased actionable data availability by 30% by integrating structured and semi-structured data sources into enterprise pipelines for BI, customer behavior analysis, and predictive analytics.</li>
+                <li>Improved reporting accuracy to 99% by developing automated validation scripts, reconciliation checks, and data quality controls using SQL and Python.</li>
+                <li>Designed analytical datasets and Power BI dashboards for customer trends, campaign performance, operational metrics, and business reporting.</li>
+                <li>Improved scalability and query performance by optimizing SQL logic, indexing strategies, transformation workflows, and ingestion processes.</li>
+                <li>Partnered with analytics and data science teams to prepare machine learning-ready datasets and support downstream modeling and reporting requirements.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="projects-expanded">
+    <h2>AI & Data Science <span>Projects</span></h2>
+    <div class="project-container">
+        <div class="project-card"><h3>LLM-Powered Document Intelligence and RAG Assistant</h3><ul class="clean"><li>Designed a LangChain-based RAG assistant using LLMs, embeddings, semantic search, vector databases, prompt engineering, and context-aware question answering.</li><li>Built a modular workflow for document loading, text chunking, embedding generation, vector indexing, similarity search, prompt construction, and LLM response generation.</li><li>Grounded LLM responses in retrieved document context to reduce hallucination risk and support structured business reporting.</li></ul></div>
+        <div class="project-card"><h3>Machine Learning-Driven Cryptocurrency Trading System</h3><p class="meta">September 2024 – December 2024</p><ul class="clean"><li>Achieved 82% and 80% prediction accuracy using XGBoost and Random Forest to forecast cryptocurrency market trends.</li><li>Engineered technical indicators, market-based features, trend signals, and sentiment variables.</li><li>Integrated NLP-based sentiment analysis using VADER and built a real-time performance dashboard.</li></ul></div>
+        <div class="project-card"><h3>Health Risk Analysis Using Smoking and Drinking Dataset</h3><p class="meta">September 2023 – December 2023</p><ul class="clean"><li>Analyzed 991,000+ healthcare records to identify relationships between smoking, drinking, BMI, blood pressure, age, and health risk indicators.</li><li>Cleaned and transformed large-scale healthcare data using Python preprocessing and Azure cloud services.</li><li>Built interactive Power BI dashboards to visualize health risk trends and population-level insights.</li></ul></div>
+        <div class="project-card"><h3>Bone Fracture Detection Using Machine Learning and Deep Learning</h3><p class="meta">August 2021</p><ul class="clean"><li>Developed and evaluated ML and deep learning models for bone fracture detection using healthcare image data.</li><li>Compared traditional ML models with deep neural networks and selected the best-performing fracture classification approach.</li><li>Published research focused on AI and deep learning for healthcare diagnostics and bone fracture detection.</li></ul></div>
+    </div>
+</section>
+
+<section id="publications">
+    <h2>Research <span>Publications</span></h2>
+    <p class="section-intro">Selected publications across in-database analytics, predictive logistics, and healthcare AI.</p>
+    <div class="publication-container">
+        <div class="publication-card">
+            <h3>Optimizing In-Database Analytics for Dynamic Data Exploration and Predictive Insights</h3>
+            <p class="publisher">Atlantis Press</p>
+            <p class="date">May 28, 2026</p>
+            <p>Research focused on improving dynamic data exploration and predictive insight generation through optimized in-database analytics workflows.</p>
+        </div>
+        <div class="publication-card">
+            <h3>Stochastic Graph-Augmented Recurrent Architectures for Predictive Logistics Network Balancing</h3>
+            <p class="publisher">Atlantis Press</p>
+            <p class="date">May 28, 2026</p>
+            <p>Research on graph-augmented recurrent architectures for predictive logistics network balancing and operational forecasting.</p>
+        </div>
+        <div class="publication-card">
+            <h3>Bone Fracture Detection and Classification</h3>
+            <p class="publisher">AUT-AUT Journal</p>
+            <p class="date">December 5, 2020</p>
+            <p>Developed and evaluated ML and deep learning models for X-ray based bone fracture detection using the MURA dataset, comparing KNN, SVM, and deep convolutional neural networks, with deep learning achieving 85% overall accuracy.</p>
+        </div>
+    </div>
+</section>
+
+<section id="education">
+    <h2>Education & <span>Certifications</span></h2>
+    <div class="cert-grid">
+        <div class="cert-card"><h3>MS in Data Analytics Engineering</h3><p class="meta">Northeastern University · Vancouver, BC</p><p>August 2023 – May 2025</p></div>
+        <div class="cert-card"><h3>BE in Computer Engineering</h3><p class="meta">Gujarat Technological University · India</p><p>August 2017 – May 2021</p></div>
+        <div class="cert-card"><h3>Certifications</h3><span class="skill-badge">Microsoft Azure Data Engineering Professional</span><span class="skill-badge">IBM Data Science Professional</span><span class="skill-badge">Databricks Fundamentals</span></div>
+    </div>
+</section>
+</main>
+<footer>© 2026 Maharshi Shukla · Experience</footer>
+
+<script>
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 70, density: { enable: true, value_area: 800 } },
+        color: { value: "#64ffda" },
+        shape: { type: "circle" },
+        opacity: { value: 0.45, random: false },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#64ffda", opacity: 0.35, width: 1 },
+        move: { enable: true, speed: 4, direction: "none", random: false, straight: false, out_mode: "out" }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+        modes: { repulse: { distance: 180, duration: 0.4 }, push: { particles_nb: 4 } }
+    },
+    retina_detect: true
+});
+gsap.to(".project-card, .skill-card, .publication-card, .experience-card, .cert-card", { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: "power2.out" });
+</script>
+
 </body>
-
 </html>
