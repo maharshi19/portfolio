@@ -1,578 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maharshi Shukla | Data Engineer Portfolio</title>
+    <title>Maharshi Shukla | AI Data Scientist & Data Engineer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        function openModal() {
-            document.getElementById('dashboardModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('dashboardModal').style.display = 'none';
-        }
-
-        // Close modal on outside click
-        window.onclick = function (event) {
-            var modal = document.getElementById('dashboardModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-    </script>
+    
+<script>
+    function openModal() { document.getElementById('dashboardModal').style.display = 'block'; }
+    function closeModal() { document.getElementById('dashboardModal').style.display = 'none'; }
+    window.onclick = function (event) {
+        var modal = document.getElementById('dashboardModal');
+        if (event.target === modal) modal.style.display = 'none';
+    }
+</script>
 
     <style>
-        html {
-            scroll-behavior: smooth;
-                }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0a192f;
-            color: #ccd6f6;
-            overflow-x: hidden;
-        }
-
-        header {
-            text-align: center;
-            padding: 50px 0;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            color: #64ffda;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        .hero {
-            text-align: center;
-            margin-top: 10vh;
-            font-size: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            color: #64ffda;
-            position: relative;
-            z-index: 2;
-        }
-
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-
-        .project-container,
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .project-card,
-        .skill-card {
-            background: #112240;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .project-card h3,
-        .skill-card h3 {
-            color: #64ffda;
-        }
-
-        .project-card p {
-            color: #ccd6f6;
-        }
-
-        .skill-badge {
-            display: inline-block;
-            background-color: #64ffda;
-            color: #0a192f;
-            padding: 10px 20px;
-            border-radius: 20px;
-            margin: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-        }
-
-        .project-card img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-        .modal {
-    display: none;
+:root {
+    --bg: #0a192f;
+    --panel: #112240;
+    --panel-light: #172a45;
+    --text: #ccd6f6;
+    --muted: #8892b0;
+    --accent: #64ffda;
+    --white: #f7f7f7;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+#particles-js {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 999;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
 }
-
-.modal-content {
-    background-color: #0a192f;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-height: 90vh;
-    overflow: auto;
-    border-radius: 10px;
-    position: relative;
+main, header, footer { position: relative; z-index: 1; }
+header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(10, 25, 47, 0.94);
+    backdrop-filter: blur(10px);
+    padding: 18px 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.12);
 }
-
-.close {
-    color: #64ffda;
-    float: right;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin: 0;
+    padding: 0 20px;
 }
-
+nav ul li { position: relative; }
+nav ul li a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 5px 0;
+    display: inline-block;
+}
+nav ul li a:hover { color: var(--white); transform: translateY(-1px); }
+nav ul li a:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+nav ul li a:hover:before { transform: scaleX(1); transform-origin: bottom left; }
+.hero {
+    max-width: 1180px;
+    margin: 8vh auto 0;
+    padding: 44px 28px 20px;
+}
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+}
+.eyebrow { color: var(--accent); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.9rem; }
+.hero h1 { font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.05; margin: 12px 0; color: var(--white); }
+.hero h1 span, h2 span { color: var(--accent); }
+.hero .subtitle { font-size: clamp(1.15rem, 2.4vw, 1.55rem); color: var(--text); max-width: 980px; }
+.hero p { color: var(--muted); max-width: 980px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+.btn {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+.btn:hover { background: rgba(100, 255, 218, 0.1); transform: translateY(-2px); }
+.btn.primary { background: var(--accent); color: var(--bg); }
+.hero-qr { text-align: center; min-width: 120px; }
+.hero-qr img { width: 110px; height: 110px; border-radius: 8px; border: 1px solid rgba(100,255,218,.35); }
+section { max-width: 1180px; margin: 0 auto; padding: 64px 28px; }
+h2 { text-align: center; color: var(--accent); font-size: 2.1rem; margin: 0 0 28px; }
+.section-intro { max-width: 850px; margin: 0 auto 32px; text-align: center; color: var(--muted); }
+.grid, .project-container, .skills-container, .publication-container, .experience-grid, .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
+}
+.card, .project-card, .skill-card, .publication-card, .experience-card, .cert-card {
+    background: rgba(17, 34, 64, 0.92);
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 18px 35px rgba(0,0,0,.18);
+    border: 1px solid rgba(100, 255, 218, 0.10);
+    transition: transform .25s ease, border-color .25s ease;
+}
+.card:hover, .project-card:hover, .skill-card:hover, .publication-card:hover, .experience-card:hover, .cert-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(100, 255, 218, 0.42);
+}
+.card h3, .project-card h3, .skill-card h3, .publication-card h3, .experience-card h3, .cert-card h3 { color: var(--accent); margin-top: 0; }
+.project-card img { width: 100%; border-radius: 10px; margin-bottom: 12px; }
+.meta { color: var(--muted); font-weight: 700; margin: 6px 0 14px; }
+ul.clean { padding-left: 18px; margin-bottom: 0; }
+ul.clean li { margin-bottom: 10px; color: var(--text); }
+.skill-badge {
+    display: inline-block;
+    background-color: rgba(100,255,218,.12);
+    color: var(--accent);
+    border: 1px solid rgba(100,255,218,.28);
+    padding: 8px 12px;
+    border-radius: 999px;
+    margin: 5px;
+    font-size: .92rem;
+    font-weight: 700;
+}
+.publication-card .publisher { color: var(--white); font-weight: 700; }
+.publication-card .date { color: var(--muted); }
 #contact {
-    padding: 50px 20px;
-    background-color: #0a192f; /* Set this to the color of your website's background */
-    color: #64ffda; /* Light text color to match theme */
+    max-width: none;
+    padding: 56px 20px;
+    background-color: rgba(10, 25, 47, 0.96);
+    color: var(--accent);
     text-align: center;
-    border-top: 1px solid #64ffda; /* Optional: Add a thin border to separate from the rest of the page */
+    border-top: 1px solid rgba(100,255,218,.25);
 }
-
-#contact h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #64ffda; /* Match the header color */
-}
-
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-}
-
-form label {
-    font-size: 1rem;
-    color: #fff; /* White label text */
-}
-
-form input,
-form textarea {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #1a2436; /* Slightly darker background for input fields */
-    color: #fff; /* White text in the input fields */
-}
-
-form textarea {
-    resize: vertical;
-}
-
-button {
-    background-color: #64ffda;
-    color: #0a192f;
+form { max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+form div { display: flex; flex-direction: column; text-align: left; }
+form label { font-size: 1rem; color: var(--white); margin-bottom: 4px; }
+form input, form textarea {
     padding: 12px;
+    font-size: 1rem;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 7px;
+    background-color: #1a2436;
+    color: var(--white);
+}
+button {
+    background-color: var(--accent);
+    color: var(--bg);
+    padding: 13px;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-weight: 800;
 }
-
-button:hover {
-    background-color: #50e3d1;
+.modal { display:none; position:fixed; inset:0; background-color: rgba(0,0,0,.82); z-index:999; }
+.modal-content { background-color: var(--bg); margin:5% auto; padding:20px; border:1px solid rgba(100,255,218,.35); width:82%; max-height:90vh; overflow:auto; border-radius:12px; position:relative; }
+.close { color:var(--accent); float:right; font-size:30px; font-weight:bold; cursor:pointer; }
+footer { text-align:center; color:var(--muted); padding: 28px; }
+@media (max-width: 768px) {
+    .hero-content { grid-template-columns: 1fr; }
+    .hero-qr { display: none; }
+    nav ul { gap: 14px; }
+    nav ul li a { font-size: .98rem; }
 }
-
-
-    </style>
+</style>
 </head>
-
 <body>
-
-    <div id="particles-js"></div>
-
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="./experience.html">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <style>
-        /* Basic Layout */
-        header {
-            position: sticky;
-            top: 0;
-            background-color: #0a192f;
-            padding: 20px 0;
-            z-index: 10;
-        }
-    
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-    
-        nav ul li {
-            position: relative;
-        }
-    
-        nav ul li a {
-            color: #64ffda;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-            padding: 5px 0;
-        }
-    
-        /* Hover Effect */
-        nav ul li a:hover {
-            color: #f7f7f7;
-            transform: scale(1.1);
-        }
-    
-        /* Active Link Styling */
-        nav ul li a.active {
-            color: #f7f7f7;
-            font-weight: bold;
-        }
-    
-        /* Add underline effect when hovering */
-        nav ul li a:before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #64ffda;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-out;
-        }
-    
-        nav ul li a:hover:before {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-    
-        /* Responsive Navigation Menu */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-            }
-    
-            nav ul li a {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
-    
-    <script>
-        // Smooth Scrolling for Active Link
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', function () {
-                document.querySelectorAll('nav ul li a').forEach(anchor => anchor.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    </script>
-
-
-  <div class="hero">
+<div id="particles-js"></div>
+<header><nav><ul>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#publications">Publications</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="./experience.html">Experience</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul></nav></header>
+<main>
+<section class="hero" id="about">
     <div class="hero-content">
         <div class="hero-text">
-            <h1>Hi, I'm Maharshi Shukla</h1>
-            <p>Data Engineer & Machine Learning Enthusiast, passionate about transforming raw data into actionable insights.</p>
-            <p style="color: #ccd6f6; line-height: 1.6; margin-top: 15px;">
-                I’m a Vancouver-based professional with a Master’s in Data Analytics Engineering from Northeastern University. With hands-on experience in data pipelines, cloud technologies (Azure, Spark), and machine learning (XGBoost, Random Forest), I specialize in building solutions that turn complex data into impactful insights. My projects—spanning cryptocurrency trading, health risk analysis, and AI-driven healthcare—showcase my ability to innovate and collaborate. I’m eager to connect and drive value through data engineering and analytics.
-            </p>
-            <a href="#contact" style="color: #64ffda; text-decoration: none; font-weight: bold; margin-top: 15px; display: inline-block;">Get in Touch</a>
+            <p class="eyebrow">AI Data Scientist · AI Engineer · LLM Engineer · Machine Learning Engineer</p>
+            <h1>Hi, I'm <span>Maharshi Shukla</span></h1>
+            <p class="subtitle">I build scalable analytics, machine learning, automation, and LLM-powered data products that transform complex business data into trusted insights.</p>
+            <p>Vancouver-based AI-focused Data Scientist and Data Engineer with experience across Python, SQL, PySpark, Databricks, Delta Lake, MLflow, Power BI, NLP, RAG, LangChain, vector search, and cloud analytics. My work spans healthcare, insurance, financial data, business intelligence, anomaly detection, and production-ready data quality validation.</p>
+            <div class="hero-actions">
+                <a class="btn primary" href="./experience.html">View Experience</a>
+                <a class="btn" href="#publications">View Publications</a>
+                <a class="btn" href="#contact">Get in Touch</a>
+            </div>
         </div>
         <div class="hero-qr">
-            <img src="qr-code (1).png" alt="Scan to view my resume" style="width: 100px; height: 100px; border-radius: 5px;">
-            <p style="color: #64ffda; font-size: 0.8rem; margin-top: 5px;">Scan for Resume</p>
+            <img src="qr-code (1).png" alt="Scan to view my resume">
+            <p style="color:#64ffda;font-size:.85rem;margin-top:6px;">Scan for Resume</p>
         </div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2>Featured <span>Projects</span></h2>
+    <div class="project-container">
+        <div class="project-card">
+            <h3>LLM-Powered Document Intelligence and RAG Assistant</h3>
+            <p>Designed a LangChain-based RAG assistant using LLMs, embeddings, semantic search, vector databases, prompt engineering, and context-aware question answering to reduce manual document review effort.</p>
+            <ul class="clean">
+                <li>Built modular document loading, chunking, embedding, vector indexing, similarity search, prompt construction, and response generation workflows.</li>
+                <li>Reduced hallucination risk by grounding answers in retrieved context for business reporting, knowledge retrieval, and document analysis.</li>
+                <li>Enabled document summarization, entity extraction, Q&A, and insight generation across unstructured files.</li>
+            </ul>
+        </div>
+        <div class="project-card">
+            <h3>Machine Learning-Driven Cryptocurrency Trading System</h3>
+            <img src="Picture3.jpg" alt="Crypto Trading Project">
+            <p>Built ML models to forecast cryptocurrency market trends using historical price, volume, market movement indicators, and NLP-based sentiment signals.</p>
+            <ul class="clean">
+                <li>Achieved 82% accuracy with XGBoost and 80% with Random Forest.</li>
+                <li>Engineered technical indicators, market-based features, trend signals, and sentiment variables.</li>
+                <li>Created an interactive dashboard to track market movement, predictions, and sentiment-based insights.</li>
+            </ul>
+        </div>
+        <div class="project-card">
+            <h3>Health Risk Analysis Using Smoking and Drinking Dataset</h3>
+            <img src="1.jpg" alt="Health Risk Analysis">
+            <p>Analyzed 991,000+ healthcare records to identify relationships between smoking, drinking, BMI, blood pressure, age, and health risk indicators using Python, Pandas, NumPy, and statistical analysis.</p>
+            <a href="#" class="btn" onclick="openModal()">View Dashboard</a>
+        </div>
+        <div class="project-card">
+            <h3>Bone Fracture Detection Using ML and Deep Learning</h3>
+            <img src="bf1.jpg" alt="Bone Fracture Detection">
+            <p>Developed and evaluated machine learning and deep learning models for X-ray-based bone fracture detection and classification, comparing traditional ML approaches with deep neural networks.</p>
+            <ul class="clean">
+                <li>Used the MURA dataset and evaluated KNN, SVM, and deep convolutional neural networks.</li>
+                <li>Achieved 85% overall accuracy using the best-performing deep learning approach.</li>
+                <li>Published research on AI-enabled healthcare diagnostics and fracture detection.</li>
+            </ul>
+            <a href="https://github.com/maharshi19/BoneFracture-using-deep-learning" target="_blank" class="btn">View on GitHub</a>
+        </div>
+    </div>
+</section>
+
+<div id="dashboardModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class='tableauPlaceholder' id='viz1739822686619' style='position: relative'>
+            <noscript><a href='#'><img alt='HABITS VS BODY SIGNAL' src='https://public.tableau.com/static/images/As/Assignment-5_17398216505190/FINAL/1_rss.png' style='border: none' /></a></noscript>
+            <object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='site_root' value='' />
+                <param name='name' value='Assignment-5_17398216505190/FINAL' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='https://public.tableau.com/static/images/As/Assignment-5_17398216505190/FINAL/1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+                <param name='filter' value='publish=yes' />
+            </object>
+        </div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1739822686619');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = '100%';
+            vizElement.style.height = '80vh';
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
     </div>
 </div>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2 style="text-align: center; color: #64ffda;">Projects</h2>
-        <div class="project-container">
-            <!-- Project 1 -->
-            <div class="project-card">
-                <h3>Machine Learning-Driven Cryptocurrency Trading System</h3>
-                <img src="Picture3.jpg" alt="Crypto Trading Project">
-                <p>Developed an advanced trading system in collaboration with an industry partner, leveraging machine learning models to
-                optimize investment strategies and enhance decision-making in a volatile market environment. As a Data and ML Engineer,
-                I collaborated with the industry partner to understand business requirements and tailor the system to real-world
-                financial scenarios. I designed and implemented a robust data pipeline for real-time processing and analysis,
-                integrating XGBoost and Random Forest models to predict market trends and optimize trading strategies. Achieved 82%
-                accuracy with XGBoost and 80% accuracy with Random Forest through rigorous backtesting and hyperparameter tuning.
-                Additionally, I utilized cloud-based data storage and visualization tools for real-time performance monitoring and
-                decision support. This project enhanced my skills in industry collaboration, data engineering, machine learning
-                (XGBoost, Random Forest), cloud computing, and financial data analysis.
-</p>
-            </div>
-            <!-- Project 2 -->
-            <div class="project-card">
-                <h3>Health Risk Analysis using Smoking and Drinking Dataset</h3>
-                <img src="1.jpg" alt="Health Risk Analysis">
-                <p>Analyzed over 991,000 records and built interactive Power BI dashboards to visualize correlations
-                    between health factors.</p>
-                <a href="#" class="project-link" style="color: #64ffda; text-decoration: none;" onclick="openModal()">
-                    View Dashboard
-                </a>
-            </div>
-            
-            <!-- Modal Structure for Embedded Dashboard -->
-            <div id="dashboardModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <!-- Tableau Embedding Code -->
-                    <div class='tableauPlaceholder' id='viz1739822686619' style='position: relative'>
-                        <noscript>
-                            <a href='#'>
-                                <img alt='HABITS VS BODY SIGNAL '
-                                    src='https://public.tableau.com/static/images/As/Assignment-5_17398216505190/FINAL/1_rss.png'
-                                    style='border: none' />
-                            </a>
-                        </noscript>
-                        <object class='tableauViz' style='display:none;'>
-                            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                            <param name='embed_code_version' value='3' />
-                            <param name='site_root' value='' />
-                            <param name='name' value='Assignment-5_17398216505190/FINAL' />
-                            <param name='tabs' value='no' />
-                            <param name='toolbar' value='yes' />
-                            <param name='static_image'
-                                value='https://public.tableau.com/static/images/As/Assignment-5_17398216505190/FINAL/1.png' />
-                            <param name='animate_transition' value='yes' />
-                            <param name='display_static_image' value='yes' />
-                            <param name='display_spinner' value='yes' />
-                            <param name='display_overlay' value='yes' />
-                            <param name='display_count' value='yes' />
-                            <param name='language' value='en-US' />
-                            <param name='filter' value='publish=yes' />
-                        </object>
-                    </div>
-                    <script type='text/javascript'>
-                        var divElement = document.getElementById('viz1739822686619');
-                        var vizElement = divElement.getElementsByTagName('object')[0];
-                        vizElement.style.width = '100%';
-                        vizElement.style.height = '80vh';
-                        var scriptElement = document.createElement('script');
-                        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-                        vizElement.parentNode.insertBefore(scriptElement, vizElement);                
-                    </script>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-                <h3>Bone Fracture Detection Using ML and DL Algorithms</h3>
-                <img src="bf1.jpg" alt="Bone Fracture Detection">
-                <p>Experimented with machine learning models to detect bone fractures and published a paper on AI in
-                    healthcare. The main scope of our project is to detect the bone fracture from different body parts and after detection of bone
-                    fracture type we can classified that which type of bone fracture may be done. This web application is mostly used in
-                    medical hospitals for detecting the fractures. Some time fracture may be minor or major that type of fracture can’t be
-                    understandable by peoples so that time this web application is very useful for detecting fracture of bones. We can
-                    thinking about future extension to provide medical description related to minor bone fracture. And if fracture is major
-                    than provide best orthopaedic hospitals for surgery or operations.
-</p>
-                <a href="https://github.com/maharshi19/BoneFracture-using-deep-learning" target="_blank" style="color: #64ffda; text-decoration: none;">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
-            </div>
+<section id="publications">
+    <h2>Research <span>Publications</span></h2>
+    <p class="section-intro">Selected publications across in-database analytics, predictive logistics, and healthcare AI.</p>
+    <div class="publication-container">
+        <div class="publication-card">
+            <h3>Optimizing In-Database Analytics for Dynamic Data Exploration and Predictive Insights</h3>
+            <p class="publisher">Atlantis Press</p>
+            <p class="date">May 28, 2026</p>
+            <p>Research focused on improving dynamic data exploration and predictive insight generation through optimized in-database analytics workflows.</p>
         </div>
-    </section>
-
-    <!-- Skills Section -->
+        <div class="publication-card">
+            <h3>Stochastic Graph-Augmented Recurrent Architectures for Predictive Logistics Network Balancing</h3>
+            <p class="publisher">Atlantis Press</p>
+            <p class="date">May 28, 2026</p>
+            <p>Research on graph-augmented recurrent architectures for predictive logistics network balancing and operational forecasting.</p>
+        </div>
+        <div class="publication-card">
+            <h3>Bone Fracture Detection and Classification</h3>
+            <p class="publisher">AUT-AUT Journal</p>
+            <p class="date">December 5, 2020</p>
+            <p>Developed and evaluated ML and deep learning models for X-ray based bone fracture detection using the MURA dataset, comparing KNN, SVM, and deep convolutional neural networks, with deep learning achieving 85% overall accuracy.</p>
+        </div>
+    </div>
+</section>
 <section id="skills">
-    <h2 style="text-align: center; color: #64ffda;">Skills</h2>
+    <h2>Technical <span>Skills</span></h2>
     <div class="skills-container">
-        <!-- Skill 1 -->
-        <div class="skill-card">
-            <h3>Machine Learning</h3>
-            <span class="skill-badge">XGBoost</span>
-            <span class="skill-badge">Random Forest</span>
-            <span class="skill-badge">TensorFlow</span>
-            <span class="skill-badge">Deep Learning</span>
-            <span class="skill-badge">Transfer Learning</span>
-        </div>
-        <!-- Skill 2 -->
-        <div class="skill-card">
-            <h3>Data Engineering</h3>
-            <span class="skill-badge">Apache Spark</span>
-            <span class="skill-badge">Kafka</span>
-            <span class="skill-badge">Airflow</span>
-            <span class="skill-badge">Azure Data Factory</span>
-            <span class="skill-badge">ETL Frameworks</span>
-        </div>
-        <!-- Skill 3 -->
-        <div class="skill-card">
-            <h3>Databases</h3>
-            <span class="skill-badge">SQL</span>
-            <span class="skill-badge">PostgreSQL</span>
-            <span class="skill-badge">MySQL</span>
-            <span class="skill-badge">MongoDB</span>
-            <span class="skill-badge">SQLite</span>
-            <span class="skill-badge">T-SQL</span>
-            <span class="skill-badge">PL/SQL</span>
-        </div>
-        <!-- Skill 4 -->
-        <div class="skill-card">
-            <h3>Cloud & DevOps</h3>
-            <span class="skill-badge">Azure</span>
-            <span class="skill-badge">CI/CD</span>
-            <span class="skill-badge">Docker</span>
-            <span class="skill-badge">Cloud Engineering</span>
-            <span class="skill-badge">Azure VM</span>
-        </div>
-        <!-- Skill 5 -->
-        <div class="skill-card">
-            <h3>Programming Languages</h3>
-            <span class="skill-badge">Python</span>
-            <span class="skill-badge">Java</span>
-            <span class="skill-badge">SQL</span>
-            <span class="skill-badge">Bash/Shell Scripting</span>
-        </div>
-        <!-- Skill 6 -->
-        <div class="skill-card">
-            <h3>Data Visualization & BI</h3>
-            <span class="skill-badge">Power BI</span>
-            <span class="skill-badge">Business Intelligence</span>
-        </div>
-        <!-- Skill 7 -->
-        <div class="skill-card">
-            <h3>Version Control & Collaboration</h3>
-            <span class="skill-badge">GitHub</span>
-        </div>
-        <div class="skill-card">
-            <h3>Requirement Gathering & Documentation</h3>
-            <span class="skill-badge">Requirement Gathering</span>
-            <span class="skill-badge">SOP Creation</span>
-            <span class="skill-badge">Technical Documentation</span>
-            <span class="skill-badge">Stakeholder Communication</span>
-        </div>
+        <div class="skill-card"><h3>Programming Languages</h3><span class="skill-badge">Python</span><span class="skill-badge">SQL</span><span class="skill-badge">R</span><span class="skill-badge">Java</span><span class="skill-badge">Bash/Shell</span></div>
+        <div class="skill-card"><h3>AI, ML & Data Science</h3><span class="skill-badge">Predictive Modeling</span><span class="skill-badge">Classification</span><span class="skill-badge">Regression</span><span class="skill-badge">Anomaly Detection</span><span class="skill-badge">NLP</span><span class="skill-badge">Time Series</span><span class="skill-badge">Feature Engineering</span><span class="skill-badge">Model Evaluation</span></div>
+        <div class="skill-card"><h3>Generative AI & LLM Engineering</h3><span class="skill-badge">LLMs</span><span class="skill-badge">Prompt Engineering</span><span class="skill-badge">RAG</span><span class="skill-badge">LangChain</span><span class="skill-badge">Vector Databases</span><span class="skill-badge">Embeddings</span><span class="skill-badge">Semantic Search</span><span class="skill-badge">AI Agents</span><span class="skill-badge">Document Q&A</span></div>
+        <div class="skill-card"><h3>Python & ML Libraries</h3><span class="skill-badge">Pandas</span><span class="skill-badge">NumPy</span><span class="skill-badge">Scikit-learn</span><span class="skill-badge">XGBoost</span><span class="skill-badge">Matplotlib</span><span class="skill-badge">Seaborn</span><span class="skill-badge">Beautiful Soup</span><span class="skill-badge">Requests</span></div>
+        <div class="skill-card"><h3>Data Science & MLOps Platforms</h3><span class="skill-badge">Databricks</span><span class="skill-badge">MLflow</span><span class="skill-badge">Azure ML</span><span class="skill-badge">Jupyter Notebook</span><span class="skill-badge">Dataiku</span><span class="skill-badge">Amazon SageMaker</span></div>
+        <div class="skill-card"><h3>Cloud & Big Data</h3><span class="skill-badge">Azure</span><span class="skill-badge">AWS</span><span class="skill-badge">GCP</span><span class="skill-badge">Snowflake</span><span class="skill-badge">Apache Spark</span><span class="skill-badge">PySpark</span><span class="skill-badge">Delta Lake</span><span class="skill-badge">Unity Catalog</span><span class="skill-badge">Kafka</span></div>
+        <div class="skill-card"><h3>Databases & Data Engineering</h3><span class="skill-badge">MySQL</span><span class="skill-badge">PostgreSQL</span><span class="skill-badge">MS SQL Server</span><span class="skill-badge">MongoDB</span><span class="skill-badge">SQLite</span><span class="skill-badge">T-SQL</span><span class="skill-badge">PL/SQL</span><span class="skill-badge">Azure Data Factory</span><span class="skill-badge">Apache Airflow</span><span class="skill-badge">ETL/ELT</span><span class="skill-badge">Data Quality Validation</span></div>
+        <div class="skill-card"><h3>Visualization & BI</h3><span class="skill-badge">Power BI</span><span class="skill-badge">Tableau</span><span class="skill-badge">DAX</span><span class="skill-badge">Dashboard Automation</span><span class="skill-badge">Business Intelligence</span></div>
     </div>
 </section>
 <section id="contact">
     <h2>Let's Connect and Transform Data into Insights!</h2>
     <form action="https://formspree.io/f/xnnjlqoo" method="POST">
-        <div>
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your Name">
-        </div>
-        <div>
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required placeholder="Your Email">
-        </div>
-        <div>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" required placeholder="Your Message"></textarea>
-        </div>
+        <div><label for="name">Your Name</label><input type="text" id="name" name="name" required placeholder="Your Name"></div>
+        <div><label for="email">Your Email</label><input type="email" id="email" name="email" required placeholder="Your Email"></div>
+        <div><label for="message">Message</label><textarea id="message" name="message" rows="4" required placeholder="Your Message"></textarea></div>
         <button type="submit">Send Message</button>
     </form>
 </section>
+</main>
+<footer>© 2026 Maharshi Shukla · AI Data Scientist and Data Engineer</footer>
 
-
-
-    <script>
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#64ffda" },
-                shape: {
-                    type: "circle",
-                    stroke: { width: 0, color: "#fff" },
-                    polygon: { nb_sides: 5 }
-                },
-                opacity: { value: 0.5, random: false, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
-                size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
-                line_linked: { enable: true, distance: 150, color: "#64ffda", opacity: 0.4, width: 1 },
-                move: {
-                    enable: true,
-                    speed: 6,
-                    direction: "none",
-                    random: false,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false,
-                    attract: { enable: false, rotateX: 600, rotateY: 1200 }
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                },
-                modes: {
-                    grab: { distance: 400, line_linked: { opacity: 1 } },
-                    bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
-                    repulse: { distance: 200, duration: 0.4 },
-                    push: { particles_nb: 4 },
-                    remove: { particles_nb: 2 }
-                }
-            },
-            retina_detect: true
-        });
-
-        gsap.to(".project-card", { opacity: 1, y: 0, duration: 1, stagger: 0.3, ease: "power2.out" });
-        gsap.to(".skill-card", { opacity: 1, y: 0, duration: 1, stagger: 0.3, ease: "power2.out" });
-        
-    </script>
+<script>
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 70, density: { enable: true, value_area: 800 } },
+        color: { value: "#64ffda" },
+        shape: { type: "circle" },
+        opacity: { value: 0.45, random: false },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#64ffda", opacity: 0.35, width: 1 },
+        move: { enable: true, speed: 4, direction: "none", random: false, straight: false, out_mode: "out" }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+        modes: { repulse: { distance: 180, duration: 0.4 }, push: { particles_nb: 4 } }
+    },
+    retina_detect: true
+});
+gsap.to(".project-card, .skill-card, .publication-card, .experience-card, .cert-card", { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: "power2.out" });
+</script>
 
 </body>
-
 </html>
